@@ -12,7 +12,7 @@ public interface ProductDao {
     int update(Product product);
     int delete(Long id);
     boolean hasSalesHistory(Long id);
-    int updateQuantity(Long id, int newQuantity);
+    int decreaseQuantity(Long id, int quantity);
     List<Product> findLowStock(int threshold);
     long count();
     long totalInventoryQuantity();

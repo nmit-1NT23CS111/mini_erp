@@ -1,0 +1,128 @@
+{
+  "info": {
+    "name": "Mini ERP API",
+    "description": "Collection for testing the Mini ERP Spring MVC application.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"Admin@123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get Dashboard",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/dashboard",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "dashboard"]
+        }
+      }
+    },
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "products"]
+        }
+      }
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Laptop\",\n  \"description\": \"Demo laptop\",\n  \"price\": 50000.00,\n  \"quantity\": 10\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "products"]
+        }
+      }
+    },
+    {
+      "name": "Get Customers",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/customers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "Create Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rahul\",\n  \"email\": \"rahul@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Bengaluru\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/customers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "Create Sale",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/mini-erp/api/sales",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["mini-erp", "api", "sales"]
+        }
+      }
+    }
+  ]
+}

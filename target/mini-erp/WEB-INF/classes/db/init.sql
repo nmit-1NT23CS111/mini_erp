@@ -84,26 +84,35 @@ CREATE TABLE IF NOT EXISTS sale_items (
 -- Admin user: username=admin  password=Admin@123
 -- BCrypt hash for "Admin@123" (strength 10)
 INSERT INTO users (username, password, role) VALUES
-('admin', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'ADMIN');
+('admin', '$2a$10$kQBknTRDhY7d3XdxND5DM.P894hSEm3wlgq0dWnvXbYA9d.FTU5Cq', 'ADMIN')
+ON DUPLICATE KEY UPDATE password = VALUES(password), role = VALUES(role);
 
 -- Demo products
-INSERT INTO products (name, description, price, quantity) VALUES
-('Laptop',      'High-performance laptop with 16GB RAM, 512GB SSD',     50000.00,  10),
-('Mouse',       'Wireless optical mouse with USB receiver',                 500.00,  50),
-('Keyboard',    'Mechanical keyboard with RGB backlight',                  3000.00,  30),
-('Monitor',     '27-inch Full HD LED monitor',                            18000.00,   8),
-('Headphones',  'Noise-cancelling over-ear headphones',                   4500.00,  20),
-('Webcam',      '1080p HD webcam with built-in microphone',               2200.00,  15),
-('USB Hub',     '7-port USB 3.0 hub with power adapter',                   800.00,  40),
-('Printer',     'Wireless inkjet colour printer',                          8500.00,   5);
+INSERT INTO products (name, description, price, quantity)
+SELECT demo.name, demo.description, demo.price, demo.quantity
+FROM (
+    SELECT 'Laptop' AS name, 'High-performance laptop with 16GB RAM, 512GB SSD' AS description, 50000.00 AS price, 10 AS quantity
+    UNION ALL SELECT 'Mouse', 'Wireless optical mouse with USB receiver', 500.00, 50
+    UNION ALL SELECT 'Keyboard', 'Mechanical keyboard with RGB backlight', 3000.00, 30
+    UNION ALL SELECT 'Monitor', '27-inch Full HD LED monitor', 18000.00, 8
+    UNION ALL SELECT 'Headphones', 'Noise-cancelling over-ear headphones', 4500.00, 20
+    UNION ALL SELECT 'Webcam', '1080p HD webcam with built-in microphone', 2200.00, 15
+    UNION ALL SELECT 'USB Hub', '7-port USB 3.0 hub with power adapter', 800.00, 40
+    UNION ALL SELECT 'Printer', 'Wireless inkjet colour printer', 8500.00, 5
+) AS demo
+WHERE NOT EXISTS (SELECT 1 FROM products p WHERE p.name = demo.name);
 
 -- Demo customers
-INSERT INTO customers (name, email, phone, address) VALUES
-('Rahul Sharma',   'rahul.sharma@example.com',  '9876543210', '12 MG Road, Bangalore, Karnataka 560001'),
-('Priya Patel',    'priya.patel@example.com',   '9988776655', '45 Park Street, Mumbai, Maharashtra 400001'),
-('Amit Kumar',     'amit.kumar@example.com',    '9123456789', '78 Civil Lines, New Delhi 110001'),
-('Sunita Singh',   'sunita.singh@example.com',  '9765432100', '23 Anna Nagar, Chennai, Tamil Nadu 600040'),
-('Vikram Reddy',   'vikram.reddy@example.com',  '9654321098', '56 Jubilee Hills, Hyderabad, Telangana 500033');
+INSERT INTO customers (name, email, phone, address)
+SELECT demo.name, demo.email, demo.phone, demo.address
+FROM (
+    SELECT 'Rahul Sharma' AS name, 'rahul.sharma@example.com' AS email, '9876543210' AS phone, '12 MG Road, Bangalore, Karnataka 560001' AS address
+    UNION ALL SELECT 'Priya Patel', 'priya.patel@example.com', '9988776655', '45 Park Street, Mumbai, Maharashtra 400001'
+    UNION ALL SELECT 'Amit Kumar', 'amit.kumar@example.com', '9123456789', '78 Civil Lines, New Delhi 110001'
+    UNION ALL SELECT 'Sunita Singh', 'sunita.singh@example.com', '9765432100', '23 Anna Nagar, Chennai, Tamil Nadu 600040'
+    UNION ALL SELECT 'Vikram Reddy', 'vikram.reddy@example.com', '9654321098', '56 Jubilee Hills, Hyderabad, Telangana 500033'
+) AS demo
+WHERE NOT EXISTS (SELECT 1 FROM customers c WHERE c.email = demo.email);
 
 -- ============================================================
 -- Verification query – run after import to confirm data

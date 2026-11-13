@@ -90,11 +90,13 @@ public class SaleServiceImpl implements SaleService {
             si.setSaleId(saleId);
             saleDao.saveSaleItem(si);
 
-            // Reduce product stock
             SaleRequest.SaleItemRequest req = request.getItems().get(i);
-            Product product = productDao.findById(req.getProductId()).get(); // already validated above
-            int newQty = product.getQuantity() - req.getQuantity();
-            productDao.updateQuantity(req.getProductId(), newQty);
+            if (productDao.decreaseQuantity(req.getProductId(), req.getQuantity()) == 0) {
+                Product product = productDao.findById(req.getProductId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Product", req.getProductId()));
+                throw new InsufficientStockException(
+                    product.getName(), product.getQuantity(), req.getQuantity());
+            }
         }
 
         sale.setItems(saleItems);

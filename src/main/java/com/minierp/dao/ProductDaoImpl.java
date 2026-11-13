@@ -88,8 +88,10 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public int updateQuantity(Long id, int newQuantity) {
-        return jdbcTemplate.update("UPDATE products SET quantity=? WHERE id=?", newQuantity, id);
+    public int decreaseQuantity(Long id, int quantity) {
+        return jdbcTemplate.update(
+            "UPDATE products SET quantity = quantity - ? WHERE id = ? AND quantity >= ?",
+            quantity, id, quantity);
     }
 
     @Override
