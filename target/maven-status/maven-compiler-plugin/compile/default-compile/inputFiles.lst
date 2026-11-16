@@ -1,5 +1,6 @@
 D:\programme files\ERP project\src\main\java\com\minierp\config\AppConfig.java
 D:\programme files\ERP project\src\main\java\com\minierp\config\WebMvcConfig.java
+D:\programme files\ERP project\src\main\java\com\minierp\controller\AiAssistantController.java
 D:\programme files\ERP project\src\main\java\com\minierp\controller\AuthController.java
 D:\programme files\ERP project\src\main\java\com\minierp\controller\CustomerController.java
 D:\programme files\ERP project\src\main\java\com\minierp\controller\DashboardController.java
@@ -13,6 +14,8 @@ D:\programme files\ERP project\src\main\java\com\minierp\dao\SaleDao.java
 D:\programme files\ERP project\src\main\java\com\minierp\dao\SaleDaoImpl.java
 D:\programme files\ERP project\src\main\java\com\minierp\dao\UserDao.java
 D:\programme files\ERP project\src\main\java\com\minierp\dao\UserDaoImpl.java
+D:\programme files\ERP project\src\main\java\com\minierp\dto\AiAssistantRequest.java
+D:\programme files\ERP project\src\main\java\com\minierp\dto\AiAssistantResponse.java
 D:\programme files\ERP project\src\main\java\com\minierp\dto\ApiResponse.java
 D:\programme files\ERP project\src\main\java\com\minierp\dto\DashboardStats.java
 D:\programme files\ERP project\src\main\java\com\minierp\dto\SaleRequest.java
@@ -24,14 +27,18 @@ D:\programme files\ERP project\src\main\java\com\minierp\model\Product.java
 D:\programme files\ERP project\src\main\java\com\minierp\model\Sale.java
 D:\programme files\ERP project\src\main\java\com\minierp\model\SaleItem.java
 D:\programme files\ERP project\src\main\java\com\minierp\model\User.java
+D:\programme files\ERP project\src\main\java\com\minierp\rest\AiAssistantRestController.java
 D:\programme files\ERP project\src\main\java\com\minierp\rest\AuthRestController.java
 D:\programme files\ERP project\src\main\java\com\minierp\rest\CustomerRestController.java
 D:\programme files\ERP project\src\main\java\com\minierp\rest\DashboardRestController.java
 D:\programme files\ERP project\src\main\java\com\minierp\rest\ProductRestController.java
 D:\programme files\ERP project\src\main\java\com\minierp\rest\SaleRestController.java
+D:\programme files\ERP project\src\main\java\com\minierp\service\AiAssistantService.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\CustomerService.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\CustomerServiceImpl.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\DashboardService.java
+D:\programme files\ERP project\src\main\java\com\minierp\service\OllamaClient.java
+D:\programme files\ERP project\src\main\java\com\minierp\service\OllamaConfig.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\ProductService.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\ProductServiceImpl.java
 D:\programme files\ERP project\src\main\java\com\minierp\service\SaleService.java

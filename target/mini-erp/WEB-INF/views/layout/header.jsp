@@ -49,6 +49,11 @@
             <i class="bi bi-people"></i>
             <span>Customers</span>
         </a>
+        <a href="${pageContext.request.contextPath}/assistant"
+           class="nav-item ${activeMenu == 'assistant' ? 'active' : ''}" id="nav-assistant">
+            <i class="bi bi-robot"></i>
+            <span>AI Assistant</span>
+        </a>
 
         <div class="nav-label mt-2">Sales</div>
         <a href="${pageContext.request.contextPath}/sales/create"

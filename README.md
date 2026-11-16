@@ -88,6 +88,54 @@ If you deploy the app under a different context path, update the corresponding U
 - Username: `admin`
 - Password: `Admin@123`
 
+## AI Business Assistant
+
+The project now includes an AI Business Assistant powered by a locally installed Ollama model.
+
+### Setup
+
+1. Make sure Ollama is installed and running locally on:
+   `http://localhost:11434`
+2. Confirm the model exists:
+   `llama3.2:3b`
+3. Start the Ollama service if needed:
+
+```bash
+ollama serve
+ollama pull llama3.2:3b
+```
+
+4. The assistant configuration is stored in:
+   `src/main/resources/ollama.properties`
+
+Example:
+
+```properties
+ollama.base-url=http://localhost:11434
+ollama.model=llama3.2:3b
+ollama.connect-timeout-ms=10000
+ollama.timeout-ms=600000
+```
+
+The connect timeout defaults to 10 seconds; the generation timeout defaults to 10 minutes to allow slower local models to finish.
+
+### Access the assistant
+
+- Page URL: `/assistant`
+- Sidebar menu item: `AI Assistant`
+
+The assistant can answer questions such as:
+
+- How many products do we have?
+- Which products have low stock?
+- What is the total sales revenue?
+- Which are the top five selling products?
+- Who are our top customers?
+- Show recent sales.
+- Summarize current business performance.
+
+The assistant uses the ERP’s own database data and passes only read-only business summaries to Ollama. It does not execute unsafe SQL or modify data.
+
 ## REST API
 
 Base URL:

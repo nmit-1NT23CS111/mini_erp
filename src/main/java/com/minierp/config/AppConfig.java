@@ -21,7 +21,7 @@ import javax.sql.DataSource;
         "com.minierp.service",
         "com.minierp.util"
 })
-@PropertySource("classpath:jdbc.properties")
+@PropertySource({"classpath:jdbc.properties", "classpath:ollama.properties"})
 public class AppConfig {
 
     @Value("${jdbc.url}")
